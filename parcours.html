@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Parcours - BTS SIO SISR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi: 25px;
+            --police: 'Nunito', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--police); }
+        body { background-color: var(--blanc); color: var(--rouge-fonce); line-height: 1.6; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: var(--arrondi);
+            border-bottom-right-radius: var(--arrondi);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-link { color: var(--blanc); text-decoration: none; margin: 0 15px; font-weight: 600; }
+        .nav-link.active { color: var(--peche); border-bottom: 2px solid var(--peche); }
+
+        /* --- CONTENU --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem 5%; }
+        h1.parcours-title { 
+            text-align: center; color: var(--rouge-vif); font-size: 2.5rem; margin-bottom: 3rem; 
+        }
+
+        /* --- TIMELINE --- */
+        .timeline { position: relative; padding: 1rem 0; }
+        .timeline::before {
+            content: '';
+            position: absolute; left: 20px; top: 0; width: 4px; height: 100%;
+            background: var(--peche); border-radius: 10px;
+        }
+
+        .timeline-item { position: relative; margin-bottom: 3rem; padding-left: 60px; }
+        .timeline-marker {
+            position: absolute; left: 10px; top: 0; width: 24px; height: 24px;
+            background: var(--rouge-vif); border: 4px solid var(--peche);
+            border-radius: 50%; z-index: 1;
+        }
+
+        .timeline-card {
+            background: var(--blanc); border: 3px solid var(--peche);
+            border-radius: var(--arrondi); padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(102, 9, 1, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .timeline-card:hover { transform: scale(1.02); border-color: var(--rouge-vif); }
+
+        .timeline-date {
+            display: inline-block; background: var(--peche); color: var(--rouge-fonce);
+            padding: 5px 15px; border-radius: 20px; font-weight: 800; font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title { color: var(--rouge-vif); font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .timeline-meta { font-size: 0.9rem; font-weight: 600; margin-bottom: 1rem; opacity: 0.8; }
+        .timeline-meta i { margin-right: 5px; color: var(--rouge-vif); }
+
+        .badge-active {
+            background: var(--rouge-fonce); color: var(--blanc);
+            padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; margin-left: 10px;
+        }
+
+        .timeline-tasks { list-style: none; margin-top: 1rem; }
+        .timeline-tasks li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.95rem; }
+        .timeline-tasks li::before {
+            content: '→'; position: absolute; left: 0; color: var(--rouge-vif); font-weight: bold;
+        }
+
+        .btn-view {
+            display: inline-block; margin-top: 1.5rem; padding: 10px 20px;
+            background: var(--peche); color: var(--rouge-fonce);
+            text-decoration: none; border-radius: 20px; font-weight: 800;
+            transition: 0.3s;
+        }
+        .btn-view:hover { background: var(--rouge-vif); color: var(--blanc); }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background: var(--rouge-fonce); color: var(--blanc);
+            text-align: center; padding: 3rem 1rem; margin-top: 4rem;
+            border-top-left-radius: var(--arrondi); border-top-right-radius: var(--arrondi);
+        }
+        .social-links a { color: var(--peche); margin: 0 10px; font-size: 1.5rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="color:white; font-weight:800;">Portfolio SISR</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Profil</a>
+            <a href="projets.html" class="nav-link">Projets</a>
+            <a href="veille.html" class="nav-link">Veille</a>
+            <a href="parcours.html" class="nav-link active">Parcours</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="parcours-title">Mon Parcours Professionnel</h1>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">Sept. 2024 - Juillet 2026 <span class="badge-active">EN COURS</span></span>
+                    <h2 class="timeline-title">BTS Services Informatiques aux Organisations (SISR)</h2>
+                    <div class="timeline-meta">
+                        <span><i class="fas fa-graduation-cap"></i> Lycée Edouard Gand · Amiens</span>
+                    </div>
+                    <p>Spécialisation en Solutions d'Infrastructure, Systèmes et Réseaux. Apprentissage de l'administration système (Linux/Windows) et de la cybersécurité.</p>
+                    <ul class="timeline-tasks">
+                        <li>Administration réseaux Cisco et segmentation VLAN.</li>
+                        <li>Gestion des services Active Directory et GPO.</li>
+                        <li>Sécurisation des infrastructures (Firewalling).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">Nov. 2025 - Déc. 2025 · 6 semaines</span>
+                    <h2 class="timeline-title">Stagiaire Administrateur Systèmes & Réseaux</h2>
+                    <div class="timeline-meta">
+                        <span><i class="fas fa-briefcase"></i> Open Biz Dev · Stage</span>
+                    </div>
+                    <p>Support technique et contribution au déploiement de solutions numériques sécurisées.</p>
+                    <ul class="timeline-tasks">
+                        <li>Maintenance de premier niveau des serveurs.</li>
+                        <li>Assistance utilisateur à distance.</li>
+                        <li>Documentation technique des procédures réseau.</li>
+                    </ul>
+                    <a href="#" class="btn-view"><i class="fas fa-file-pdf"></i> Voir le rapport</a>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">Oct. 2021 - Sept. 2024 · 3 ans</span>
+                    <h2 class="timeline-title">Technicien Support Assistance Informatique</h2>
+                    <div class="timeline-meta">
+                        <span><i class="fas fa-briefcase"></i> Armée de Terre · 40e Régiment de Transmissions</span>
+                    </div>
+                    <p>Gestion opérationnelle des systèmes de communication militaires et support de proximité.</p>
+                    <ul class="timeline-tasks">
+                        <li>Déploiement de réseaux mobiles sur le terrain.</li>
+                        <li>Maintenance curative des postes tactiques.</li>
+                        <li>Respect rigoureux des protocoles de sécurité défense.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="timeline-card">
+                    <span class="timeline-date">Sept. 2017 - Juin 2020</span>
+                    <h2 class="timeline-title">Bac Pro Systèmes Électroniques Numériques</h2>
+                    <div class="timeline-meta">
+                        <span><i class="fas fa-graduation-cap"></i> Lycée Arthur Rimbaud</span>
+                    </div>
+                    <p>Obtention du diplôme avec une spécialisation dans les systèmes numériques et audiovisuels.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 - Ton Nom | BTS SIO SISR</p>
+        <div class="social-links" style="margin-top: 20px;">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

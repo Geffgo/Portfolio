@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets - BTS SIO SISR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PALETTE & VARIABLES --- */
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi-bouton: 30px;
+            --arrondi-carte: 25px;
+            --police-ronde: 'Nunito', sans-serif;
+        }
+
+        /* --- BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--police-ronde);
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--rouge-fonce);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: var(--arrondi-carte);
+            border-bottom-right-radius: var(--arrondi-carte);
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { color: var(--blanc); font-weight: 800; font-size: 1.2rem; }
+
+        .nav-link, .nav-contact {
+            color: var(--blanc);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link.active { color: var(--peche); border-bottom: 2px solid var(--peche); }
+        .nav-link:hover, .nav-contact:hover { color: var(--peche); }
+
+        /* --- EN-TÊTE PROJETS --- */
+        .projects-header {
+            text-align: center;
+            padding: 2rem 2rem 1rem 2rem;
+        }
+        .projects-header h1 {
+            color: var(--rouge-vif);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- AFFICHAGE EN GRILLE (LISTE) --- */
+        .projects-grid {
+            display: grid;
+            /* Crée des colonnes qui s'adaptent toutes seules (minimum 300px de large) */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* --- CARTES PROJETS --- */
+        .project-item {
+            background-color: var(--blanc);
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(102, 9, 1, 0.15);
+            border-color: var(--rouge-vif);
+        }
+
+        .project-item-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-image-wrapper {
+            height: 200px;
+            background-color: var(--peche);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .project-image-wrapper i {
+            font-size: 5rem;
+            color: var(--rouge-fonce);
+            opacity: 0.8;
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover .project-image-wrapper i {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-name {
+            color: var(--rouge-fonce);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .project-category {
+            color: var(--rouge-vif);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-description {
+            font-size: 0.95rem;
+            color: var(--rouge-fonce);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-btn {
+            align-self: flex-start;
+            background-color: var(--peche);
+            color: var(--rouge-fonce);
+            padding: 8px 20px;
+            border-radius: var(--arrondi-bouton);
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover .project-btn {
+            background-color: var(--rouge-vif);
+            color: var(--blanc);
+        }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: var(--rouge-fonce);
+            color: var(--peche);
+            text-align: center;
+            padding: 2rem;
+            border-top-left-radius: var(--arrondi-carte);
+            border-top-right-radius: var(--arrondi-carte);
+            margin-top: 4rem;
+        }
+
+        .social-btn {
+            color: var(--blanc);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .social-btn:hover { color: var(--peche); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Portfolio SISR</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Profil</a>
+            <a href="projets.html" class="nav-link active">Projets</a>
+            <a href="veille.html" class="nav-link">Veille</a>
+            <a href="parcours.html" class="nav-link">Parcours</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="projects-header">
+            <h1>Mes Projets Techniques</h1>
+        </div>
+
+        <section class="projects-section">
+            <div class="projects-grid">
+                
+                <article class="project-item">
+                    <a href="projet-ad.html" class="project-item-link">
+                        <div class="project-image-wrapper">
+                            <i class="fab fa-windows"></i>
+                        </div>
+                        <div class="project-info">
+                            <h2 class="project-name">Déploiement Active Directory</h2>
+                            <p class="project-category">Système | Windows Server 2022</p>
+                            <p class="project-description">Mise en place d'un domaine d'entreprise, création d'unités d'organisation, gestion des utilisateurs, groupes et application de stratégies de groupe (GPO) pour sécuriser le parc informatique.</p>
+                            <span class="project-btn">Voir les détails</span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-item">
+                    <a href="projet-reseau.html" class="project-item-link">
+                        <div class="project-image-wrapper">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-info">
+                            <h2 class="project-name">Architecture Réseau Sécurisée</h2>
+                            <p class="project-category">Réseau | Packet Tracer & Cisco</p>
+                            <p class="project-description">Conception d'une topologie réseau avec segmentation par VLANs. Configuration des switchs et routeurs Cisco, mise en place du routage inter-VLAN et listes de contrôle d'accès (ACL).</p>
+                            <span class="project-btn">Voir les détails</span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-item">
+                    <a href="projet-securite.html" class="project-item-link">
+                        <div class="project-image-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="project-info">
+                            <h2 class="project-name">Pare-feu & VPN (pfSense)</h2>
+                            <p class="project-category">Sécurité | pfSense / OpenVPN</p>
+                            <p class="project-description">Déploiement d'un routeur/pare-feu pfSense. Filtrage des paquets, configuration de règles NAT et mise en place d'un tunnel VPN sécurisé pour les travailleurs à distance.</p>
+                            <span class="project-btn">Voir les détails</span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-item">
+                    <a href="projet-linux.html" class="project-item-link">
+                        <div class="project-image-wrapper">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                        <div class="project-info">
+                            <h2 class="project-name">Serveur Web & BDD</h2>
+                            <p class="project-category">Système | Debian / LAMP</p>
+                            <p class="project-description">Installation et sécurisation d'un environnement LAMP (Linux, Apache, MariaDB, PHP). Hébergement d'intranets d'entreprise avec gestion des certificats SSL/TLS.</p>
+                            <span class="project-btn">Voir les détails</span>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="project-item">
+                    <a href="projet-script.html" class="project-item-link">
+                        <div class="project-image-wrapper">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="project-info">
+                            <h2 class="project-name">Automatisation des Sauvegardes</h2>
+                            <p class="project-category">Automatisation | Bash / Python</p>
+                            <p class="project-description">Création de scripts personnalisés permettant d'automatiser la sauvegarde nocturne des bases de données et des fichiers de configuration critiques vers un serveur distant.</p>
+                            <span class="project-btn">Voir les détails</span>
+                        </div>
+                    </a>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 - Ton Prénom Nom | BTS SIO SISR</p>
+            <div style="margin-top: 15px;">
+                <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

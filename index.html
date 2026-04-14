@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - BTS SIO SISR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- PALETTE & VARIABLES --- */
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi-bouton: 30px;
+            --arrondi-carte: 25px;
+            --police-ronde: 'Nunito', sans-serif;
+        }
+
+        /* --- BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--police-ronde);
+        }
+
+        body {
+            background-color: var(--blanc);
+            color: var(--rouge-fonce);
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: var(--arrondi-carte);
+            border-bottom-right-radius: var(--arrondi-carte);
+            margin-bottom: 2rem;
+        }
+
+        .nav-link, .nav-contact {
+            color: var(--blanc);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover, .nav-contact:hover {
+            color: var(--peche);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--peche);
+            border-radius: var(--arrondi-carte);
+            margin: 0 5%;
+            box-shadow: 0 10px 20px rgba(102, 9, 1, 0.1);
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--rouge-fonce);
+            line-height: 1.1;
+        }
+
+        .hero-role {
+            font-size: 1.5rem;
+            color: var(--rouge-vif);
+            margin: 1.5rem 0;
+            font-weight: 600;
+        }
+
+        .btn-primary, .btn-outline {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: var(--arrondi-bouton);
+            text-decoration: none;
+            font-weight: 800;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--rouge-vif);
+            color: var(--blanc);
+            border: 2px solid var(--rouge-vif);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--rouge-fonce);
+            border-color: var(--rouge-fonce);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--rouge-fonce);
+            border: 2px solid var(--rouge-fonce);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--rouge-fonce);
+            color: var(--blanc);
+            transform: translateY(-3px);
+        }
+
+        /* --- ABOUT & BTS SECTION --- */
+        .section-container {
+            padding: 4rem 10%;
+        }
+
+        .section-title {
+            color: var(--rouge-vif);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .card {
+            background-color: var(--blanc);
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* --- SKILLS HORIZONTAL (Simulé en Grid pour simplicité) --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background-color: var(--rouge-fonce);
+            color: var(--blanc);
+            padding: 2rem;
+            border-radius: var(--arrondi-carte);
+            text-align: center;
+        }
+
+        .skill-card h3 {
+            color: var(--peche);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .skill-card li {
+            margin-bottom: 10px;
+        }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: var(--rouge-fonce);
+            color: var(--peche);
+            text-align: center;
+            padding: 2rem;
+            border-top-left-radius: var(--arrondi-carte);
+            border-top-right-radius: var(--arrondi-carte);
+            margin-top: 4rem;
+        }
+
+        .social-btn {
+            color: var(--blanc);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-btn:hover {
+            color: var(--peche);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Portfolio SISR</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Profil</a>
+            <a href="projets.html" class="nav-link active">Projets</a>
+            <a href="veille.html" class="nav-link">Veille</a>
+            <a href="parcours.html" class="nav-link">Parcours</a>
+            <a href="contact.html" class="nav-contact">Contact</a>
+        </div>
+    </nav>
+    
+    <section class="hero-header" id="profil">
+        <div class="hero-content">
+            <div class="hero-name">Hugo<br>Geffroy</div>
+            <div class="hero-role">Futur Administrateur Systèmes & Réseaux</div>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Actuellement en BTS SIO option SISR, je suis passionné par l'architecture des réseaux, la cybersécurité et l'administration des serveurs. À la recherche d'une alternance !
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Me contacter</a>
+                <a href="#" class="btn-outline">Télécharger mon CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">Ma Formation : BTS SIO (SISR)</h2>
+        <div class="card">
+            <p>Le <strong>BTS Services Informatiques aux Organisations</strong> forme aux métiers de l'informatique. J'ai choisi l'option <strong>SISR (Solutions d'Infrastructure, Systèmes et Réseaux)</strong> car je suis fasciné par ce qui se passe "en coulisses".</p>
+            <br>
+            <p>Mon objectif est de garantir la disponibilité, la sécurité et l'optimisation des systèmes d'information des entreprises à travers la configuration de routeurs, la gestion de serveurs (Linux/Windows) et le déploiement de services Cloud.</p>
+        </div>
+    </section>
+
+    <section class="section-container" id="competences">
+        <h2 class="section-title">Mes Compétences Techniques</h2>
+        <div class="skills-grid">
+            
+            <div class="skill-card">
+                <h3><i class="fas fa-network-wired"></i> Réseau</h3>
+                <p>Architecture et routage</p>
+                <hr style="border-color: var(--rouge-vif); margin: 10px 0;">
+                <ul>
+                    <li><i class="fas fa-check"></i> Configuration VLAN / Switchs</li>
+                    <li><i class="fas fa-check"></i> Routage Cisco</li>
+                    <li><i class="fas fa-check"></i> Mise en place de VPN</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fas fa-server"></i> Système</h3>
+                <p>Administration serveurs</p>
+                <hr style="border-color: var(--rouge-vif); margin: 10px 0;">
+                <ul>
+                    <li><i class="fab fa-linux"></i> Linux (Debian, Ubuntu)</li>
+                    <li><i class="fab fa-windows"></i> Windows Server (AD, DNS)</li>
+                    <li><i class="fas fa-cloud"></i> Virtualisation (Proxmox, VMware)</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3><i class="fas fa-shield-alt"></i> Sécurité & Scripting</h3>
+                <p>Protection et automatisation</p>
+                <hr style="border-color: var(--rouge-vif); margin: 10px 0;">
+                <ul>
+                    <li><i class="fas fa-fire-alt"></i> Pare-feu (pfSense)</li>
+                    <li><i class="fab fa-python"></i> Scripts Python / Bash</li>
+                    <li><i class="fas fa-lock"></i> Sauvegardes (Veeam)</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="main-footer" id="contact">
+        <p>&copy; 2026 - Portfolio BTS SIO SISR</p>
+        <p style="font-size: 0.9rem; margin-top: 10px;">Développé avec passion.</p>
+        <div style="margin-top: 15px;">
+            <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>

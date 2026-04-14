@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Technologique - BTS SIO SISR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- PALETTE & VARIABLES --- */
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi-bouton: 30px;
+            --arrondi-carte: 25px;
+            --police-ronde: 'Nunito', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--police-ronde); }
+        body { background-color: var(--blanc); color: var(--rouge-fonce); line-height: 1.6; overflow-x: hidden; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom-left-radius: var(--arrondi-carte);
+            border-bottom-right-radius: var(--arrondi-carte);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .nav-link { color: var(--blanc); text-decoration: none; margin: 0 15px; font-weight: 600; }
+        .nav-link.active { color: var(--peche); border-bottom: 2px solid var(--peche); }
+
+        /* --- PARTICLES CANVAS --- */
+        #veille-particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none; opacity: 0.6;
+        }
+
+        /* --- SCROLL PROGRESS --- */
+        .scroll-progress-indicator {
+            position: fixed; top: 0; left: 0; width: 100%; height: 4px;
+            background: rgba(255, 214, 155, 0.3); z-index: 1001;
+        }
+        .scroll-progress-bar { height: 100%; background: var(--rouge-vif); width: 0%; transition: width 0.1s; }
+
+        /* --- HEADER VEILLE --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 5%; }
+        .veille-header { text-align: center; margin-bottom: 3rem; background: var(--blanc); padding: 2rem; border-radius: var(--arrondi-carte); box-shadow: 0 10px 30px rgba(102, 9, 1, 0.05); }
+        .section-title { color: var(--rouge-vif); font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+        .veille-intro { font-size: 1.1rem; max-width: 800px; margin: 0 auto 2rem auto; }
+        .veille-header-stats-mini { display: flex; justify-content: center; gap: 20px; color: var(--rouge-vif); font-weight: 600; }
+        
+        /* --- CONTROLES VUE --- */
+        .veille-controls { display: flex; justify-content: flex-end; margin-bottom: 2rem; }
+        .view-buttons-wrapper { display: flex; background: var(--peche); border-radius: var(--arrondi-bouton); padding: 5px; margin-left: 15px;}
+        .view-btn { background: transparent; border: none; padding: 8px 15px; border-radius: var(--arrondi-bouton); color: var(--rouge-fonce); font-weight: 800; cursor: pointer; transition: 0.3s; }
+        .view-btn.active { background: var(--rouge-vif); color: var(--blanc); }
+
+        /* --- GRILLE CARTES --- */
+        .veille-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
+        }
+        .veille-grid.list-view { grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; }
+        .veille-grid.list-view .veille-card { display: flex; flex-direction: row; align-items: center; }
+        .veille-grid.list-view .veille-image { width: 250px; height: 100%; border-radius: var(--arrondi-carte) 0 0 var(--arrondi-carte); }
+        
+        .veille-card {
+            background: var(--blanc); border: 3px solid var(--peche); border-radius: var(--arrondi-carte);
+            overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
+            display: flex; flex-direction: column; opacity: 0; transform: translateY(20px);
+        }
+        .veille-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(102, 9, 1, 0.15); border-color: var(--rouge-vif); }
+        .veille-card.revealed { opacity: 1; transform: translateY(0); }
+
+        .veille-image { height: 200px; background: var(--peche); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;}
+        .veille-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .veille-card:hover .veille-image img { transform: scale(1.1); }
+        
+        .veille-card-badge { position: absolute; top: 15px; left: 15px; background: var(--rouge-vif); color: var(--blanc); padding: 5px 15px; border-radius: var(--arrondi-bouton); font-weight: 800; font-size: 0.8rem; z-index: 2; }
+        .veille-new-badge { position: absolute; top: 15px; right: 15px; background: var(--rouge-fonce); color: var(--peche); padding: 5px 15px; border-radius: var(--arrondi-bouton); font-weight: 800; font-size: 0.8rem; z-index: 2; }
+
+        .veille-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .veille-meta { font-size: 0.85rem; color: var(--rouge-vif); margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: 600;}
+        .veille-content h3 { color: var(--rouge-fonce); margin-bottom: 10px; font-size: 1.3rem; }
+        .veille-content p { font-size: 0.95rem; margin-bottom: 15px; flex-grow: 1; }
+
+        .source-tag { background: var(--peche); border: none; color: var(--rouge-fonce); padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; margin-right: 5px; margin-bottom: 5px; font-weight: 800;}
+        .veille-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px; border-top: 2px solid var(--peche); padding-top: 15px;}
+        .veille-action-btn { background: transparent; border: none; color: var(--rouge-vif); font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+        .veille-action-btn:hover { color: var(--rouge-fonce); transform: scale(1.2); }
+
+        /* --- STATS --- */
+        .veille-stats { display: flex; justify-content: space-around; flex-wrap: wrap; background: var(--rouge-fonce); color: var(--blanc); padding: 3rem; border-radius: var(--arrondi-carte); margin-top: 4rem; }
+        .stat-item { text-align: center; margin: 1rem; }
+        .stat-icon { font-size: 2.5rem; color: var(--peche); margin-bottom: 10px; }
+        .stat-number { font-size: 3rem; font-weight: 800; line-height: 1; }
+        .stat-label { font-size: 1.1rem; color: var(--peche); font-weight: 600;}
+
+        /* --- FOOTER --- */
+        .main-footer { background-color: var(--rouge-fonce); color: var(--peche); text-align: center; padding: 2rem; border-top-left-radius: var(--arrondi-carte); border-top-right-radius: var(--arrondi-carte); margin-top: 4rem; }
+        .social-btn { color: var(--blanc); font-size: 1.5rem; margin: 0 10px; transition: color 0.3s; }
+        .social-btn:hover { color: var(--peche); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="color:white; font-weight:800;">Portfolio SISR</div>
+        <div class="nav-menu">
+            <a href="index.html" class="nav-link">Profil</a>
+            <a href="projets.html" class="nav-link">Projets</a>
+            <a href="veille.html" class="nav-link active">Veille</a>            
+            <a href="parcours.html" class="nav-link">Parcours</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <canvas id="veille-particles"></canvas>
+    <div class="scroll-progress-indicator"><div class="scroll-progress-bar"></div></div>
+
+    <main>
+        <section class="veille-section">
+            <div class="container">
+                
+                <div class="veille-header">
+                    <h2 class="section-title">Veille Technologique</h2>
+                    <p class="veille-intro">
+                        Je mène une veille active sur les technologies émergentes et les tendances de l'infrastructure IT. Découvrez les sujets que je suis avec attention pour rester à la pointe de l'innovation.
+                    </p>
+                    <div class="veille-header-stats-mini">
+                        <div><i class="fas fa-fire"></i> Mise à jour active</div>
+                        <div><i class="fas fa-server"></i> Systèmes & Réseaux</div>
+                    </div>
+                </div>
+
+                <div class="veille-controls">
+                    <div class="view-controls">
+                        <span style="font-weight: 800;">Affichage :</span>
+                        <div class="view-buttons-wrapper">
+                            <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i> Grille</button>
+                            <button class="view-btn" data-view="list"><i class="fas fa-list"></i> Liste</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="veille-grid" id="veille-grid">
+                    
+                    <article class="veille-card" data-veille="avions-chasse">
+                        <div class="veille-image">
+                            <i class="fas fa-fighter-jet" style="font-size: 5rem; color: var(--rouge-fonce); opacity: 0.5;"></i>
+                            <div class="veille-card-badge"><i class="fas fa-shield-alt"></i> Défense</div>
+                            <div class="veille-new-badge"><i class="fas fa-sparkles"></i> Récent</div>
+                        </div>
+                        <div class="veille-content">
+                            <div class="veille-meta">
+                                <span><i class="far fa-calendar"></i> 15 Janv. 2025</span>
+                                <span><i class="far fa-clock"></i> 5 min</span>
+                            </div>
+                            <h3>Informatique dans les avions de chasse français</h3>
+                            <p>L'évolution des systèmes informatiques embarqués dans les avions de combat modernes de l'armée française, notamment le Rafale.</p>
+                            <div class="veille-sources">
+                                <button class="source-tag"><i class="fas fa-shield-alt"></i> Défense</button>
+                                <button class="source-tag"><i class="fas fa-microchip"></i> Embarqué</button>
+                            </div>
+                            <div class="veille-actions">
+                                <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
+                                <button class="veille-action-btn" data-action="bookmark"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="veille-card" data-veille="automatisation">
+                        <div class="veille-image">
+                            <i class="fas fa-robot" style="font-size: 5rem; color: var(--rouge-fonce); opacity: 0.5;"></i>
+                            <div class="veille-card-badge"><i class="fas fa-cogs"></i> Automatisation</div>
+                        </div>
+                        <div class="veille-content">
+                            <div class="veille-meta">
+                                <span><i class="far fa-calendar"></i> 18 Déc. 2024</span>
+                                <span><i class="far fa-clock"></i> 6 min</span>
+                            </div>
+                            <h3>Automatisation avec n8n et outils no-code</h3>
+                            <p>L'essor des plateformes d'automatisation no-code/low-code comme n8n pour créer des workflows automatisés en administration système.</p>
+                            <div class="veille-sources">
+                                <button class="source-tag"><i class="fas fa-code"></i> No-Code</button>
+                                <button class="source-tag"><i class="fas fa-project-diagram"></i> Workflow</button>
+                            </div>
+                            <div class="veille-actions">
+                                <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
+                                <button class="veille-action-btn" data-action="bookmark"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="veille-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Sujets suivis</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-link"></i></div>
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Sources consultées</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div class="stat-number">Actif</div>
+                        <div class="stat-label">Mise à jour régulière</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 - Portfolio BTS SIO SISR</p>
+        <div class="social-links" style="margin-top: 15px;">
+            <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Système de vue (grille/liste)
+            const veilleGrid = document.getElementById('veille-grid');
+            const viewButtons = document.querySelectorAll('.view-btn');
+            
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    viewButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    if(btn.getAttribute('data-view') === 'list') {
+                        veilleGrid.classList.add('list-view');
+                    } else {
+                        veilleGrid.classList.remove('list-view');
+                    }
+                });
+            });
+
+            // Barre de progression au scroll
+            const progressBar = document.querySelector('.scroll-progress-bar');
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.width = `${(scrollTop / scrollHeight) * 100}%`;
+            });
+
+            // Apparition des cartes
+            const cards = document.querySelectorAll('.veille-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('revealed'), index * 100);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            cards.forEach(card => observer.observe(card));
+
+            // Clic sur les cartes (Redirection factice basée sur ton code d'origine)
+            cards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if(!e.target.closest('.veille-actions') && !e.target.closest('.source-tag')) {
+                        const veilleId = card.getAttribute('data-veille');
+                        console.log(`Redirection vers : veille-${veilleId}.html`);
+                        // Décommenter pour activer la vraie redirection :
+                        // window.location.href = `veille-${veilleId}.html`; 
+                    }
+                });
+            });
+
+            // Action boutons (Partage / Favoris)
+            document.querySelectorAll('.veille-action-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const action = btn.getAttribute('data-action');
+                    if(action === 'bookmark') {
+                        const icon = btn.querySelector('i');
+                        icon.classList.toggle('far');
+                        icon.classList.toggle('fas');
+                    } else if (action === 'share') {
+                        alert("Lien copié dans le presse-papier !");
+                    }
+                });
+            });
+
+            // --- PARTICULES ADAPTÉES À LA CHARTE GRAPHIQUE ---
+            const canvas = document.getElementById('veille-particles');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 1;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                    // Alternance entre la couleur Pêche et Rouge Vif pour coller au thème
+                    this.isRed = Math.random() > 0.5; 
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    // Code RGB de #AB3021 (Rouge Vif) ou #FFD69B (Pêche)
+                    ctx.fillStyle = this.isRed ? `rgba(171, 48, 33, ${this.opacity})` : `rgba(255, 214, 155, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+            
+            for (let i = 0; i < 50; i++) particles.push(new Particle());
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+                
+                // Connexion des particules
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            // Traits de connexion couleur Pêche
+                            ctx.strokeStyle = `rgba(255, 214, 155, ${0.1 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 1;
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.stroke();
+                        }
+                    });
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>
