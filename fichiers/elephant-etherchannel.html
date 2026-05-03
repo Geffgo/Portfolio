@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Éléphant : EtherChannel - Hugo GEFFROY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- VARIABLES (Cohérence Portfolio) --- */
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi-bouton: 30px;
+            --arrondi-carte: 25px;
+            --police-ronde: 'Nunito', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--police-ronde); }
+        body { background-color: var(--blanc); color: var(--rouge-fonce); line-height: 1.6; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: var(--arrondi-carte);
+            border-bottom-right-radius: var(--arrondi-carte);
+            margin-bottom: 2rem;
+        }
+        .logo { color: var(--blanc); font-weight: 800; font-size: 1.2rem; }
+        .nav-link { color: var(--blanc); text-decoration: none; margin: 0 15px; font-weight: 600; transition: 0.3s; }
+        .nav-link:hover { color: var(--peche); }
+
+        /* --- CONTENU --- */
+        .section-container { padding: 2rem 10%; }
+        
+        .mission-header {
+            background-color: var(--peche);
+            padding: 3rem;
+            border-radius: var(--arrondi-carte);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--blanc);
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        h2 { color: var(--rouge-vif); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        h3 { color: var(--rouge-fonce); margin: 1.5rem 0 0.5rem 0; font-size: 1.1rem; }
+        
+        ul { list-style: none; }
+        li { margin-bottom: 10px; display: flex; align-items: start; gap: 10px; }
+        li i { color: var(--rouge-vif); margin-top: 5px; }
+
+        .badge-skill {
+            display: inline-block;
+            background: var(--rouge-fonce);
+            color: var(--peche);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        /* --- VISUALISATION PDF --- */
+        .pdf-container {
+            width: 100%;
+            height: 800px;
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--rouge-vif);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-5px); }
+
+        .main-footer {
+            background-color: var(--rouge-fonce);
+            color: var(--peche);
+            text-align: center;
+            padding: 2rem;
+            border-top-left-radius: var(--arrondi-carte);
+            border-top-right-radius: var(--arrondi-carte);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Hugo GEFFROY</div>
+        <div class="nav-menu">
+            <a href="../index.html" class="nav-link">Profil</a>
+            <a href="../projets.html" class="nav-link">Projets</a>
+            <a href="../veille.html" class="nav-link">Veille</a>
+            <a href="../parcours.html" class="nav-link">Parcours</a>
+        </div>
+    </nav>
+
+    <main class="section-container">
+        <a href="../projets.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+
+        <header class="mission-header">
+            <h1>Projet Éléphant : Optimisation de la bande passante</h1>
+            <p>Infrastructure Réseau Commutée - 16 janvier 2026</p>
+        </header>
+
+        <div class="grid-info">
+            <div class="card">
+                <h2><i class="fas fa-info-circle"></i> La Mission</h2>
+                <p>L'objectif est de supprimer les points de congestion entre les commutateurs du CRASH en agrégeant plusieurs liens physiques en un seul lien logique. Cette technologie, nommée <strong>EtherChannel</strong>, permet d'augmenter la bande passante tout en offrant une redondance critique en cas de panne de lien.</p>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-bullseye"></i> Objectifs Techniques</h2>
+                <ul>
+                    <li><i class="fas fa-check"></i> Configurer l'agrégation via le protocole standardisé <strong>LACP (IEEE 802.3ad)</strong>.</li>
+                    <li><i class="fas fa-check"></i> Créer des interfaces logiques <strong>Port-Channel</strong> sur les switchs de cœur et de DMZ.</li>
+                    <li><i class="fas fa-check"></i> Activer le mode <i>Trunk</i> sur les canaux pour transporter les flux VLAN segmentés.</li>
+                    <li><i class="fas fa-check"></i> Vérifier la synchronisation et la répartition de charge entre les commutateurs.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-network-wired"></i> Avantages de la Solution</h2>
+            <div class="grid-info">
+                <div>
+                    <h3>Performance & Résilience</h3>
+                    <p>L'EtherChannel combine la vitesse des liens physiques et distribue intelligemment le trafic. En cas de défaillance d'un câble, le flux est redirigé instantanément sans interruption de service.</p>
+                </div>
+                <div>
+                    <h3>Gestion Simplifiée</h3>
+                    <p>Pour l'administrateur, les liens multiples apparaissent comme une interface unique, simplifiant la topologie logique et la configuration du Spanning Tree.</p>
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="badge-skill">EtherChannel / Port-Channel</span>
+                <span class="badge-skill">Protocole LACP (Active Mode)</span>
+                <span class="badge-skill">IEEE 802.3ad</span>
+                <span class="badge-skill">Agrégation de liens physiques</span>
+                <span class="badge-skill">Répartition de charge</span>
+                <span class="badge-skill">Continuité de service</span>
+            </div>
+        </div>
+
+        <h2 style="justify-content: center; margin-top: 3rem;"><i class="fas fa-file-pdf"></i> Compte Rendu de Mission</h2>
+        <div class="pdf-container">
+            <iframe src="assets/Projet_éléphant_mission7.pdf" width="100%" height="100%" style="border: none;">
+                <p>Votre navigateur ne prend pas en charge l'affichage des PDF. 
+                <a href="assets/Projet_éléphant_mission7.pdf">Cliquez ici pour télécharger le document.</a></p>
+            </iframe>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 - Portfolio Hugo GEFFROY | Projet Éléphant SIO</p>
+    </footer>
+
+</body>
+</html>

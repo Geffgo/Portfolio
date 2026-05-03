@@ -64,9 +64,9 @@
         .veille-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;
         }
-        .veille-grid.list-view { grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; }
-        .veille-grid.list-view .veille-card { display: flex; flex-direction: row; align-items: center; }
-        .veille-grid.list-view .veille-image { width: 250px; height: 100%; border-radius: var(--arrondi-carte) 0 0 var(--arrondi-carte); }
+        .veille-grid.list-view { grid-template-columns: 1fr; max-width: 900px; margin: 0 auto; }
+        .veille-grid.list-view .veille-card { display: flex; flex-direction: row; align-items: center; min-height: 200px;}
+        .veille-grid.list-view .veille-image { width: 200px; height: 100%; border-radius: var(--arrondi-carte) 0 0 var(--arrondi-carte); flex-shrink: 0;}
         
         .veille-card {
             background: var(--blanc); border: 3px solid var(--peche); border-radius: var(--arrondi-carte);
@@ -76,21 +76,21 @@
         .veille-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(102, 9, 1, 0.15); border-color: var(--rouge-vif); }
         .veille-card.revealed { opacity: 1; transform: translateY(0); }
 
-        .veille-image { height: 200px; background: var(--peche); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;}
-        .veille-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .veille-card:hover .veille-image img { transform: scale(1.1); }
+        .veille-image { height: 180px; background: var(--peche); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;}
+        .veille-image i { font-size: 4rem; color: var(--rouge-fonce); opacity: 0.6; }
         
-        .veille-card-badge { position: absolute; top: 15px; left: 15px; background: var(--rouge-vif); color: var(--blanc); padding: 5px 15px; border-radius: var(--arrondi-bouton); font-weight: 800; font-size: 0.8rem; z-index: 2; }
-        .veille-new-badge { position: absolute; top: 15px; right: 15px; background: var(--rouge-fonce); color: var(--peche); padding: 5px 15px; border-radius: var(--arrondi-bouton); font-weight: 800; font-size: 0.8rem; z-index: 2; }
+        .veille-card-badge { position: absolute; top: 15px; left: 15px; background: var(--rouge-vif); color: var(--blanc); padding: 5px 15px; border-radius: var(--arrondi-bouton); font-weight: 800; font-size: 0.75rem; z-index: 2; }
+        .veille-new-badge { position: absolute; top: 15px; right: 15px; background: var(--rouge-fonce); color: var(--peche); padding: 5px 15px; border-radius: var(--arrondi-bouton); font-weight: 800; font-size: 0.75rem; z-index: 2; }
 
         .veille-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .veille-meta { font-size: 0.85rem; color: var(--rouge-vif); margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: 600;}
-        .veille-content h3 { color: var(--rouge-fonce); margin-bottom: 10px; font-size: 1.3rem; }
-        .veille-content p { font-size: 0.95rem; margin-bottom: 15px; flex-grow: 1; }
+        .veille-meta { font-size: 0.8rem; color: var(--rouge-vif); margin-bottom: 8px; display: flex; justify-content: space-between; font-weight: 600;}
+        .veille-content h3 { color: var(--rouge-fonce); margin-bottom: 10px; font-size: 1.15rem; line-height: 1.3; }
+        .veille-content p { font-size: 0.9rem; margin-bottom: 15px; flex-grow: 1; color: #444; }
 
-        .source-tag { background: var(--peche); border: none; color: var(--rouge-fonce); padding: 5px 10px; border-radius: 15px; font-size: 0.8rem; margin-right: 5px; margin-bottom: 5px; font-weight: 800;}
-        .veille-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px; border-top: 2px solid var(--peche); padding-top: 15px;}
-        .veille-action-btn { background: transparent; border: none; color: var(--rouge-vif); font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+        .veille-sources-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+        .source-tag { background: var(--peche); border: none; color: var(--rouge-fonce); padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 800;}
+        .veille-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px; border-top: 2px solid var(--peche); padding-top: 12px;}
+        .veille-action-btn { background: transparent; border: none; color: var(--rouge-vif); font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
         .veille-action-btn:hover { color: var(--rouge-fonce); transform: scale(1.2); }
 
         /* --- STATS --- */
@@ -129,11 +129,11 @@
                 <div class="veille-header">
                     <h2 class="section-title">Veille Technologique</h2>
                     <p class="veille-intro">
-                        Je mène une veille active sur les technologies émergentes et les tendances de l'infrastructure IT. Découvrez les sujets que je suis avec attention pour rester à la pointe de l'innovation.
+                        Analyse des évolutions du stockage SSD et des distributions Linux. Focus sur la performance matérielle et la sécurité des systèmes d'exploitation.
                     </p>
                     <div class="veille-header-stats-mini">
-                        <div><i class="fas fa-fire"></i> Mise à jour active</div>
-                        <div><i class="fas fa-server"></i> Systèmes & Réseaux</div>
+                        <div><i class="fas fa-microchip"></i> Matériel High-Tech</div>
+                        <div><i class="fas fa-linux"></i> Open Source & Linux</div>
                     </div>
                 </div>
 
@@ -149,22 +149,23 @@
 
                 <div class="veille-grid" id="veille-grid">
                     
-                    <article class="veille-card" data-veille="avions-chasse">
+                    <!-- Article 1: Crucial X9 Pro -->
+                    <article class="veille-card" data-url="https://www.capital.fr/conso/ce-petit-ssd-externe-pratique-reste-un-champion-selon-nos-tests-1525620">
                         <div class="veille-image">
-                            <i class="fas fa-fighter-jet" style="font-size: 5rem; color: var(--rouge-fonce); opacity: 0.5;"></i>
-                            <div class="veille-card-badge"><i class="fas fa-shield-alt"></i> Défense</div>
-                            <div class="veille-new-badge"><i class="fas fa-sparkles"></i> Récent</div>
+                            <i class="fas fa-hdd"></i>
+                            <div class="veille-card-badge">Hardware</div>
+                            <div class="veille-new-badge">Top Test</div>
                         </div>
                         <div class="veille-content">
                             <div class="veille-meta">
-                                <span><i class="far fa-calendar"></i> 15 Janv. 2025</span>
-                                <span><i class="far fa-clock"></i> 5 min</span>
+                                <span><i class="far fa-calendar"></i> Capital</span>
+                                <span><i class="fas fa-bolt"></i> Performance</span>
                             </div>
-                            <h3>Informatique dans les avions de chasse français</h3>
-                            <p>L'évolution des systèmes informatiques embarqués dans les avions de combat modernes de l'armée française, notamment le Rafale.</p>
-                            <div class="veille-sources">
-                                <button class="source-tag"><i class="fas fa-shield-alt"></i> Défense</button>
-                                <button class="source-tag"><i class="fas fa-microchip"></i> Embarqué</button>
+                            <h3>SSD Crucial X9 Pro : Le champion du stockage externe</h3>
+                            <p>Analyse des performances du SSD X9 Pro. Un modèle qui combine compacité et débits élevés (1050 Mo/s) selon les tests récents.</p>
+                            <div class="veille-sources-tags">
+                                <span class="source-tag">SSD</span>
+                                <span class="source-tag">Stockage</span>
                             </div>
                             <div class="veille-actions">
                                 <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
@@ -173,21 +174,95 @@
                         </div>
                     </article>
 
-                    <article class="veille-card" data-veille="automatisation">
+                    <!-- Article 2: Guide Meilleurs SSD -->
+                    <article class="veille-card" data-url="https://www.lesnumeriques.com/disque-dur-externe/guide-achat-quels-sont-les-meilleurs-ssd-externes-g143811.html">
                         <div class="veille-image">
-                            <i class="fas fa-robot" style="font-size: 5rem; color: var(--rouge-fonce); opacity: 0.5;"></i>
-                            <div class="veille-card-badge"><i class="fas fa-cogs"></i> Automatisation</div>
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="veille-card-badge">Guide Achat</div>
                         </div>
                         <div class="veille-content">
                             <div class="veille-meta">
-                                <span><i class="far fa-calendar"></i> 18 Déc. 2024</span>
-                                <span><i class="far fa-clock"></i> 6 min</span>
+                                <span><i class="far fa-calendar"></i> Les Numériques</span>
+                                <span><i class="fas fa-list-ol"></i> Comparatif</span>
                             </div>
-                            <h3>Automatisation avec n8n et outils no-code</h3>
-                            <p>L'essor des plateformes d'automatisation no-code/low-code comme n8n pour créer des workflows automatisés en administration système.</p>
-                            <div class="veille-sources">
-                                <button class="source-tag"><i class="fas fa-code"></i> No-Code</button>
-                                <button class="source-tag"><i class="fas fa-project-diagram"></i> Workflow</button>
+                            <h3>Guide : Les meilleurs SSD externes de 2026</h3>
+                            <p>Sélection mise à jour des solutions de stockage nomades les plus fiables du marché pour les professionnels de l'IT.</p>
+                            <div class="veille-sources-tags">
+                                <span class="source-tag">Comparatif</span>
+                                <span class="source-tag">NVMe</span>
+                            </div>
+                            <div class="veille-actions">
+                                <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
+                                <button class="veille-action-btn" data-action="bookmark"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3: Faille Python Root Linux -->
+                    <article class="veille-card" data-url="https://www.frandroid.com/os/gnu-linux/3085647_comment-10-lignes-de-python-rootent-nimporte-quel-pc-linux">
+                        <div class="veille-image">
+                            <i class="fas fa-user-secret"></i>
+                            <div class="veille-card-badge">Sécurité</div>
+                            <div class="veille-new-badge">Alerte</div>
+                        </div>
+                        <div class="veille-content">
+                            <div class="veille-meta">
+                                <span><i class="far fa-calendar"></i> Frandroid</span>
+                                <span><i class="fas fa-bug"></i> Faille</span>
+                            </div>
+                            <h3>Sécurité : Rooter un PC Linux en 10 lignes de Python</h3>
+                            <p>Analyse d'une vulnérabilité critique permettant une élévation de privilèges locale sur les systèmes Linux via un script minimaliste.</p>
+                            <div class="veille-sources-tags">
+                                <span class="source-tag">Python</span>
+                                <span class="source-tag">Exploit</span>
+                            </div>
+                            <div class="veille-actions">
+                                <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
+                                <button class="veille-action-btn" data-action="bookmark"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4: Zorin OS 18.1 -->
+                    <article class="veille-card" data-url="https://www.zdnet.fr/actualites/pourquoi-zorin-os-18-1-est-tout-simplement-la-meilleure-distribution-linux-et-ce-pour-tout-le-monde-494021.htm">
+                        <div class="veille-image">
+                            <i class="fab fa-linux"></i>
+                            <div class="veille-card-badge">OS</div>
+                        </div>
+                        <div class="veille-content">
+                            <div class="veille-meta">
+                                <span><i class="far fa-calendar"></i> ZDNet</span>
+                                <span><i class="fas fa-star"></i> Recommandé</span>
+                            </div>
+                            <h3>Zorin OS 18.1 : La meilleure distribution pour tous ?</h3>
+                            <p>Pourquoi cette version s'impose comme l'alternative la plus crédible à Windows et macOS pour le grand public et les pros.</p>
+                            <div class="veille-sources-tags">
+                                <span class="source-tag">Zorin OS</span>
+                                <span class="source-tag">UX Design</span>
+                            </div>
+                            <div class="veille-actions">
+                                <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
+                                <button class="veille-action-btn" data-action="bookmark"><i class="far fa-bookmark"></i></button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5: Linux pour Devs -->
+                    <article class="veille-card" data-url="https://www.zdnet.fr/pratique/les-8-distributions-linux-que-je-recommande-toujours-en-premier-aux-developpeurs-et-pourquoi-490099.htm">
+                        <div class="veille-image">
+                            <i class="fas fa-terminal"></i>
+                            <div class="veille-card-badge">Développement</div>
+                        </div>
+                        <div class="veille-content">
+                            <div class="veille-meta">
+                                <span><i class="far fa-calendar"></i> ZDNet</span>
+                                <span><i class="fas fa-tools"></i> DevTools</span>
+                            </div>
+                            <h3>Les 8 distributions Linux idéales pour les développeurs</h3>
+                            <p>Sélection d'environnements optimisés pour la programmation et l'administration système, de Fedora à Arch Linux.</p>
+                            <div class="veille-sources-tags">
+                                <span class="source-tag">Fedora</span>
+                                <span class="source-tag">Debian</span>
                             </div>
                             <div class="veille-actions">
                                 <button class="veille-action-btn" data-action="share"><i class="fas fa-share-alt"></i></button>
@@ -200,14 +275,14 @@
 
                 <div class="veille-stats">
                     <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                        <div class="stat-icon"><i class="fas fa-microchip"></i></div>
                         <div class="stat-number">2</div>
-                        <div class="stat-label">Sujets suivis</div>
+                        <div class="stat-label">Hardware SSD</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-icon"><i class="fas fa-link"></i></div>
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Sources consultées</div>
+                        <div class="stat-icon"><i class="fab fa-linux"></i></div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Linux & Securité</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-icon"><i class="fas fa-sync-alt"></i></div>
@@ -221,7 +296,7 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 - Portfolio BTS SIO SISR</p>
+        <p>&copy; 2026 - Portfolio BTS SIO SISR | Veille Technologique</p>
         <div class="social-links" style="margin-top: 15px;">
             <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
             <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
@@ -267,14 +342,12 @@
             }, { threshold: 0.1 });
             cards.forEach(card => observer.observe(card));
 
-            // Clic sur les cartes (Redirection factice basée sur ton code d'origine)
+            // Clic sur les cartes vers URL réelles
             cards.forEach(card => {
                 card.addEventListener('click', (e) => {
                     if(!e.target.closest('.veille-actions') && !e.target.closest('.source-tag')) {
-                        const veilleId = card.getAttribute('data-veille');
-                        console.log(`Redirection vers : veille-${veilleId}.html`);
-                        // Décommenter pour activer la vraie redirection :
-                        // window.location.href = `veille-${veilleId}.html`; 
+                        const url = card.getAttribute('data-url');
+                        window.open(url, '_blank');
                     }
                 });
             });
@@ -282,18 +355,22 @@
             // Action boutons (Partage / Favoris)
             document.querySelectorAll('.veille-action-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Empêche le clic sur la carte
                     const action = btn.getAttribute('data-action');
                     if(action === 'bookmark') {
                         const icon = btn.querySelector('i');
                         icon.classList.toggle('far');
                         icon.classList.toggle('fas');
+                        icon.classList.toggle('active');
                     } else if (action === 'share') {
+                        const url = btn.closest('.veille-card').getAttribute('data-url');
+                        navigator.clipboard.writeText(url);
                         alert("Lien copié dans le presse-papier !");
                     }
                 });
             });
 
-            // --- PARTICULES ADAPTÉES À LA CHARTE GRAPHIQUE ---
+            // --- PARTICULES ---
             const canvas = document.getElementById('veille-particles');
             const ctx = canvas.getContext('2d');
             let particles = [];
@@ -313,7 +390,6 @@
                     this.speedX = (Math.random() - 0.5) * 0.5;
                     this.speedY = (Math.random() - 0.5) * 0.5;
                     this.opacity = Math.random() * 0.5 + 0.2;
-                    // Alternance entre la couleur Pêche et Rouge Vif pour coller au thème
                     this.isRed = Math.random() > 0.5; 
                 }
                 update() {
@@ -325,7 +401,6 @@
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    // Code RGB de #AB3021 (Rouge Vif) ou #FFD69B (Pêche)
                     ctx.fillStyle = this.isRed ? `rgba(171, 48, 33, ${this.opacity})` : `rgba(255, 214, 155, ${this.opacity})`;
                     ctx.fill();
                 }
@@ -337,13 +412,11 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 particles.forEach(p => { p.update(); p.draw(); });
                 
-                // Connexion des particules
                 particles.forEach((p1, i) => {
                     particles.slice(i + 1).forEach(p2 => {
                         const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
                         if (dist < 120) {
                             ctx.beginPath();
-                            // Traits de connexion couleur Pêche
                             ctx.strokeStyle = `rgba(255, 214, 155, ${0.1 * (1 - dist / 120)})`;
                             ctx.lineWidth = 1;
                             ctx.moveTo(p1.x, p1.y);

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bastion de Sécurité - Hugo GEFFROY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- VARIABLES (Cohérence Portfolio) --- */
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi-bouton: 30px;
+            --arrondi-carte: 25px;
+            --police-ronde: 'Nunito', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--police-ronde); }
+        body { background-color: var(--blanc); color: var(--rouge-fonce); line-height: 1.6; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: var(--arrondi-carte);
+            border-bottom-right-radius: var(--arrondi-carte);
+            margin-bottom: 2rem;
+        }
+        .logo { color: var(--blanc); font-weight: 800; font-size: 1.2rem; }
+        .nav-link { color: var(--blanc); text-decoration: none; margin: 0 15px; font-weight: 600; transition: 0.3s; }
+        .nav-link:hover { color: var(--peche); }
+
+        /* --- CONTENU --- */
+        .section-container { padding: 2rem 10%; }
+        
+        .mission-header {
+            background-color: var(--peche);
+            padding: 3rem;
+            border-radius: var(--arrondi-carte);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--blanc);
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        h2 { color: var(--rouge-vif); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        h3 { color: var(--rouge-fonce); margin: 1.5rem 0 0.5rem 0; font-size: 1.1rem; }
+        
+        ul { list-style: none; }
+        li { margin-bottom: 10px; display: flex; align-items: start; gap: 10px; }
+        li i { color: var(--rouge-vif); margin-top: 5px; }
+
+        .badge-skill {
+            display: inline-block;
+            background: var(--rouge-fonce);
+            color: var(--peche);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        .pdf-container {
+            width: 100%;
+            height: 800px;
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--rouge-vif);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-5px); }
+
+        .main-footer {
+            background-color: var(--rouge-fonce);
+            color: var(--peche);
+            text-align: center;
+            padding: 2rem;
+            border-top-left-radius: var(--arrondi-carte);
+            border-top-right-radius: var(--arrondi-carte);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Hugo GEFFROY</div>
+        <div class="nav-menu">
+            <a href="../index.html" class="nav-link">Profil</a>
+            <a href="../projets.html" class="nav-link">Projets</a>
+            <a href="../veille.html" class="nav-link">Veille</a>
+            <a href="../parcours.html" class="nav-link">Parcours</a>
+        </div>
+    </nav>
+
+    <main class="section-container">
+        <a href="../parcours.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour au parcours</a>
+
+        <header class="mission-header">
+            <h1>Infrastructure Pédagogique & Bastion de Sécurité</h1>
+            <p>Stage DEVISSE Cybersécurité - Nov/Déc 2025</p>
+        </header>
+
+        <div class="grid-info">
+            <!-- Présentation du Projet -->
+            <div class="card">
+                <h2><i class="fas fa-project-diagram"></i> Le Projet</h2>
+                <p>Conception et déploiement d'une infrastructure virtualisée sécurisée sous <strong>Proxmox VE</strong> destinée à des étudiants en informatique. L'architecture repose sur une approche multicouche implémentant une défense en profondeur (pare-feu, proxy, bastion).</p>
+                <h3>Le Bastion</h3>
+                <p>Développé comme une application web (SPA), le bastion constitue l'unique point d'entrée centralisé. Il intercepte les requêtes via un reverse proxy <strong>Nginx</strong> et ne redirige vers l'hyperviseur qu'après une authentification valide.</p>
+            </div>
+
+            <!-- Architecture et Défis -->
+            <div class="card">
+                <h2><i class="fas fa-shield-alt"></i> Architecture Réseau</h2>
+                
+                <ul>
+                    <li><i class="fas fa-lock"></i> <strong>Reverse Proxy Nginx :</strong> Masque l'infrastructure réelle et force le passage par le bastion.</li>
+                    <li><i class="fas fa-network-wired"></i> <strong>Ségrégation :</strong> Mise en place d'une DMZ pour les services exposés.</li>
+                    <li><i class="fas fa-users-cog"></i> <strong>Active Directory :</strong> Gestion centralisée des identités et des accès (GPO).</li>
+                </ul>
+                <h3>Défis Techniques</h3>
+                <p>Adaptation face à des limitations matérielles et configuration fine des en-têtes HTTP pour la préservation des sessions utilisateur.</p>
+            </div>
+        </div>
+
+        <!-- Compétences acquises -->
+        <div class="card">
+            <h2><i class="fas fa-graduation-cap"></i> Compétences acquises</h2>
+            <div style="margin-top: 10px;">
+                <span class="badge-skill">Virtualisation Proxmox VE & LVM</span>
+                <span class="badge-skill">Sécurisation des accès (Nginx / Bastion)</span>
+                <span class="badge-skill">Administration Active Directory & GPO</span>
+                <span class="badge-skill">Défense en profondeur (Palo Alto, SFR)</span>
+                <span class="badge-skill">Déploiement Cloud (MinIO, Nextcloud)</span>
+                <span class="badge-skill">Développement Web (HTML/CSS/JS)</span>
+            </div>
+        </div>
+
+        <!-- Visualisation PDF -->
+        <h2 style="justify-content: center; margin-top: 3rem;"><i class="fas fa-file-pdf"></i> Rapport de Stage DEVISSE</h2>
+        <div class="pdf-container">
+            <iframe src="assets/Stage_SIO_2_DEVISSE_Cybersecurité.pdf" width="100%" height="100%" style="border: none;">
+                <p>Votre navigateur ne prend pas en charge l'affichage des PDF. 
+                <a href="assets/Stage_SIO_2_DEVISSE_Cybersecurité.pdf">Cliquez ici pour télécharger le document.</a></p>
+            </iframe>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 - Portfolio Hugo GEFFROY | Projet de Stage SIO</p>
+    </footer>
+
+</body>
+</html>

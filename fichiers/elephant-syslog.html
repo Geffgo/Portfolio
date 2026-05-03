@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Éléphant : Serveur Syslog - Hugo GEFFROY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- VARIABLES (Cohérence Portfolio) --- */
+        :root {
+            --blanc: #FFFFFF;
+            --peche: #FFD69B;
+            --rouge-vif: #AB3021;
+            --rouge-fonce: #660901;
+            --arrondi-bouton: 30px;
+            --arrondi-carte: 25px;
+            --police-ronde: 'Nunito', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--police-ronde); }
+        body { background-color: var(--blanc); color: var(--rouge-fonce); line-height: 1.6; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--rouge-fonce);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-left-radius: var(--arrondi-carte);
+            border-bottom-right-radius: var(--arrondi-carte);
+            margin-bottom: 2rem;
+        }
+        .logo { color: var(--blanc); font-weight: 800; font-size: 1.2rem; }
+        .nav-link { color: var(--blanc); text-decoration: none; margin: 0 15px; font-weight: 600; transition: 0.3s; }
+        .nav-link:hover { color: var(--peche); }
+
+        /* --- CONTENU --- */
+        .section-container { padding: 2rem 10%; }
+        
+        .mission-header {
+            background-color: var(--peche);
+            padding: 3rem;
+            border-radius: var(--arrondi-carte);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--blanc);
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        h2 { color: var(--rouge-vif); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        h3 { color: var(--rouge-fonce); margin: 1.5rem 0 0.5rem 0; font-size: 1.1rem; }
+        
+        ul { list-style: none; }
+        li { margin-bottom: 10px; display: flex; align-items: start; gap: 10px; }
+        li i { color: var(--rouge-vif); margin-top: 5px; }
+
+        .badge-skill {
+            display: inline-block;
+            background: var(--rouge-fonce);
+            color: var(--peche);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        /* --- VISUALISATION PDF --- */
+        .pdf-container {
+            width: 100%;
+            height: 800px;
+            border: 3px solid var(--peche);
+            border-radius: var(--arrondi-carte);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--rouge-vif);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            transition: 0.3s;
+        }
+        .btn-back:hover { transform: translateX(-5px); }
+
+        .main-footer {
+            background-color: var(--rouge-fonce);
+            color: var(--peche);
+            text-align: center;
+            padding: 2rem;
+            border-top-left-radius: var(--arrondi-carte);
+            border-top-right-radius: var(--arrondi-carte);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Hugo GEFFROY</div>
+        <div class="nav-menu">
+            <a href="../index.html" class="nav-link">Profil</a>
+            <a href="../projets.html" class="nav-link">Projets</a>
+            <a href="../veille.html" class="nav-link">Veille</a>
+            <a href="../parcours.html" class="nav-link">Parcours</a>
+        </div>
+    </nav>
+
+    <main class="section-container">
+        <a href="../projets.html" class="btn-back"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+
+        <header class="mission-header">
+            <h1>Projet Éléphant : Centralisation des logs (Syslog)</h1>
+            <p>Supervision & Sécurité Réseau - 16 janvier 2026</p>
+        </header>
+
+        <div class="grid-info">
+            <div class="card">
+                <h2><i class="fas fa-info-circle"></i> La Mission</h2>
+                <p>L'objectif est de mettre en place un serveur <strong>Syslog</strong> centralisé pour collecter les événements générés par les équipements du CRASH. Cette centralisation est vitale pour la supervision globale, le diagnostic rapide d'incidents et la détection d'activités suspectes sur le réseau.</p>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-bullseye"></i> Objectifs Techniques</h2>
+                <ul>
+                    <li><i class="fas fa-check"></i> Déployer le service <strong>rsyslog</strong> sur une machine virtuelle Debian.</li>
+                    <li><i class="fas fa-check"></i> Activer la réception des logs via les protocoles UDP (port 514) et TCP.</li>
+                    <li><i class="fas fa-check"></i> Organiser dynamiquement les journaux par équipement via des templates Cisco.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-microchip"></i> Supervision & Organisation</h2>
+            <div class="grid-info">
+                <div>
+                    <h3>Gestion côté Serveur</h3>
+                    <p>Le serveur est configuré pour isoler les logs de chaque routeur, switch ou firewall dans des fichiers distincts (ex: <code>/var/log/cisco/crash-rtr01.log</code>), simplifiant ainsi l'audit et l'historisation.</p>
+                </div>
+                <div>
+                    <h3>Journalisation Cisco</h3>
+                    <p>Les équipements envoient des logs de niveau "informational" incluant l'horodatage précis (date, heure, millisecondes) pour assurer une corrélation parfaite des événements.</p>
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="badge-skill">rsyslog / Debian Linux</span>
+                <span class="badge-skill">Protocoles UDP & TCP 514</span>
+                <span class="badge-skill">Cisco Logging (Informational)</span>
+                <span class="badge-skill">Templates de journalisation</span>
+                <span class="badge-skill">Audit & Supervision réseau</span>
+                <span class="badge-skill">Corrélation temporelle</span>
+            </div>
+        </div>
+
+        <h2 style="justify-content: center; margin-top: 3rem;"><i class="fas fa-file-pdf"></i> Compte Rendu de Mission</h2>
+        <div class="pdf-container">
+            <iframe src="assets/Projet_éléphant_mission4.pdf" width="100%" height="100%" style="border: none;">
+                <p>Votre navigateur ne prend pas en charge l'affichage des PDF. 
+                <a href="assets/Projet_éléphant_mission4.pdf">Cliquez ici pour télécharger le document.</a></p>
+            </iframe>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 - Portfolio Hugo GEFFROY | Projet Éléphant SIO</p>
+    </footer>
+
+</body>
+</html>

@@ -201,99 +201,206 @@
             <a href="projets.html" class="nav-link active">Projets</a>
             <a href="veille.html" class="nav-link">Veille</a>
             <a href="parcours.html" class="nav-link">Parcours</a>
-            <a href="contact.html" class="nav-contact">Contact</a>
         </div>
     </nav>
 
-    <main>
-        <div class="projects-header">
-            <h1>Mes Projets Techniques</h1>
-        </div>
+    <!-- --- EN-TÊTE PROJETS --- -->
+    <header class="projects-header">
+        <h1>Mes Réalisations</h1>
+        <p>Découvrez mes travaux en administration systèmes et réseaux ainsi que mes projets de développement.</p>
+    </header>
 
-        <section class="projects-section">
-            <div class="projects-grid">
-                
-                <article class="project-item">
-                    <a href="projet-ad.html" class="project-item-link">
-                        <div class="project-image-wrapper">
-                            <i class="fab fa-windows"></i>
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-name">Déploiement Active Directory</h2>
-                            <p class="project-category">Système | Windows Server 2022</p>
-                            <p class="project-description">Mise en place d'un domaine d'entreprise, création d'unités d'organisation, gestion des utilisateurs, groupes et application de stratégies de groupe (GPO) pour sécuriser le parc informatique.</p>
-                            <span class="project-btn">Voir les détails</span>
-                        </div>
-                    </a>
-                </article>
+    <!-- --- GRILLE DES PROJETS --- -->
+    <main class="projects-grid">
 
-                <article class="project-item">
-                    <a href="projet-reseau.html" class="project-item-link">
-                        <div class="project-image-wrapper">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-name">Architecture Réseau Sécurisée</h2>
-                            <p class="project-category">Réseau | Packet Tracer & Cisco</p>
-                            <p class="project-description">Conception d'une topologie réseau avec segmentation par VLANs. Configuration des switchs et routeurs Cisco, mise en place du routage inter-VLAN et listes de contrôle d'accès (ACL).</p>
-                            <span class="project-btn">Voir les détails</span>
-                        </div>
-                    </a>
-                </article>
+        <!-- Mission CRASH : GLPI -->
+        <article class="project-item">
+            <a href="fichiers/glpi-initial.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Déploiement GLPI</h2>
+                    <p class="project-category">Mission CRASH - Système</p>
+                    <p class="project-description">Installation et configuration initiale du gestionnaire de parc informatique et helpdesk.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
 
-                <article class="project-item">
-                    <a href="projet-securite.html" class="project-item-link">
-                        <div class="project-image-wrapper">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-name">Pare-feu & VPN (pfSense)</h2>
-                            <p class="project-category">Sécurité | pfSense / OpenVPN</p>
-                            <p class="project-description">Déploiement d'un routeur/pare-feu pfSense. Filtrage des paquets, configuration de règles NAT et mise en place d'un tunnel VPN sécurisé pour les travailleurs à distance.</p>
-                            <span class="project-btn">Voir les détails</span>
-                        </div>
-                    </a>
-                </article>
+        <!-- Mission CRASH : DMZ Stormshield -->
+        <article class="project-item">
+            <a href="fichiers/dmz-stormshield.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">DMZ & Stormshield</h2>
+                    <p class="project-category">Mission CRASH - Sécurité SNS</p>
+                    <p class="project-description">Configuration d'une zone démilitarisée pour sécuriser les services exposés via un firewall Stormshield.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
 
-                <article class="project-item">
-                    <a href="projet-linux.html" class="project-item-link">
-                        <div class="project-image-wrapper">
-                            <i class="fab fa-linux"></i>
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-name">Serveur Web & BDD</h2>
-                            <p class="project-category">Système | Debian / LAMP</p>
-                            <p class="project-description">Installation et sécurisation d'un environnement LAMP (Linux, Apache, MariaDB, PHP). Hébergement d'intranets d'entreprise avec gestion des certificats SSL/TLS.</p>
-                            <span class="project-btn">Voir les détails</span>
-                        </div>
-                    </a>
-                </article>
+        <!-- Mission CRASH : SSH -->
+        <article class="project-item">
+            <a href="fichiers/ssh-secu.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-key"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Sécurisation SSH</h2>
+                    <p class="project-category">Mission CRASH - Administration</p>
+                    <p class="project-description">Durcissement des accès distants (clés SSH, désactivation du root login, Fail2Ban).</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
 
-                <article class="project-item">
-                    <a href="projet-script.html" class="project-item-link">
-                        <div class="project-image-wrapper">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <div class="project-info">
-                            <h2 class="project-name">Automatisation des Sauvegardes</h2>
-                            <p class="project-category">Automatisation | Bash / Python</p>
-                            <p class="project-description">Création de scripts personnalisés permettant d'automatiser la sauvegarde nocturne des bases de données et des fichiers de configuration critiques vers un serveur distant.</p>
-                            <span class="project-btn">Voir les détails</span>
-                        </div>
-                    </a>
-                </article>
+        <!-- Mission CRASH : HA GLPI -->
+        <article class="project-item">
+            <a href="fichiers/glpi-ha.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Haute Dispo GLPI</h2>
+                    <p class="project-category">Mission CRASH - Infrastructure</p>
+                    <p class="project-description">Mise en place d'une infrastructure redondante pour assurer la continuité du service GLPI.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
 
-            </div>
-        </section>
+        <!-- Stage BRED -->
+        <article class="project-item">
+            <a href="fichiers/stage-bred.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-building-columns"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Stage BRED</h2>
+                    <p class="project-category">Expérience Professionnelle</p>
+                    <p class="project-description">Immersion au sein du pôle informatique de la Banque Populaire : missions SISR au quotidien.</p>
+                    <span class="project-btn">Voir le rapport</span>
+                </div>
+            </a>
+        </article>
+
+        <!-- Projet Tournament -->
+        <article class="project-item">
+            <a href="fichiers/gestion-tournament.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Gestion Tournament</h2>
+                    <p class="project-category">Projet Applicatif</p>
+                    <p class="project-description">Application de gestion de tournois sportifs avec suivi des scores et des classements.</p>
+                    <span class="project-btn">Voir le projet</span>
+                </div>
+            </a>
+        </article>
+
+        <!-- Projet JDR -->
+        <article class="project-item">
+            <a href="fichiers/jdr-profils.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-dice-d20"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Gestion Profils JDR</h2>
+                    <p class="project-category">Projet Applicatif</p>
+                    <p class="project-description">Outil de gestion de fiches de personnages et statistiques pour Jeux de Rôle.</p>
+                    <span class="project-btn">Voir le projet</span>
+                </div>
+            </a>
+        </article>
+
+                <!-- Projet Bastion de sécurité -->
+        <article class="project-item">
+            <a href="fichiers/bastion-securite.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Bastion de Sécurité</h2>
+                    <p class="project-category">Projet Applicatif</p>
+                    <p class="project-description">Mise en place d'un bastion SSH pour sécuriser l'accès aux serveurs.</p>
+                    <span class="project-btn">Voir le projet</span>
+                </div>
+            </a>
+        </article>
+
+        <!-- Projet Éléphant : Maquette Packet Tracer -->
+        <article class="project-item">
+            <a href="fichiers/elephant-packet-tracer.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Maquette Réseau CRASH</h2>
+                    <p class="project-category">Projet Éléphant - Simulation</p>
+                    <p class="project-description">Modélisation complète de l'architecture réseau du CRASH sous Cisco Packet Tracer.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
+
+        <!-- Projet Éléphant : Configuration Réseau & NTP -->
+        <article class="project-item">
+            <a href="fichiers/elephant-ntp.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Administration & Synchronisation NTP</h2>
+                    <p class="project-category">Projet Éléphant - Infrastructure</p>
+                    <p class="project-description">Uniformisation des configurations réseau et déploiement d'un serveur NTP centralisé sous Debian.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
+
+        <!-- Projet Éléphant : Centralisation Syslog -->
+        <article class="project-item">
+            <a href="fichiers/elephant-syslog.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Centralisation des Logs (Syslog)</h2>
+                    <p class="project-category">Projet Éléphant - Supervision</p>
+                    <p class="project-description">Mise en œuvre d'un serveur rsyslog centralisé pour la collecte et l'organisation des journaux système du parc réseau.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
+
+        <!-- Projet Éléphant : Optimisation EtherChannel -->
+        <article class="project-item">
+            <a href="fichiers/elephant-etherchannel.html" class="project-item-link">
+                <div class="project-image-wrapper">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-name">Optimisation de Bande Passante</h2>
+                    <p class="project-category">Projet Éléphant - Infrastructure</p>
+                    <p class="project-description">Mise en œuvre de la technologie EtherChannel (LACP) pour l'agrégation de liens et la haute disponibilité inter-switchs.</p>
+                    <span class="project-btn">Voir les détails</span>
+                </div>
+            </a>
+        </article>
+
     </main>
 
+    <!-- --- FOOTER --- -->
     <footer class="main-footer">
-        <div class="footer-container">
-            <p>&copy; 2026 - Ton Prénom Nom | BTS SIO SISR</p>
-            <div style="margin-top: 15px;">
-                <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-            </div>
+        <p>&copy; 2024 - Portfolio BTS SIO SISR</p>
+        <div style="margin-top: 15px;">
+            <a href="#" class="social-btn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-btn"><i class="fab fa-github"></i></a>
         </div>
     </footer>
 
