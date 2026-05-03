@@ -99,6 +99,13 @@
             border-top-left-radius: var(--arrondi); border-top-right-radius: var(--arrondi);
         }
         .social-links a { color: var(--peche); margin: 0 10px; font-size: 1.5rem; }
+        
+            /* Petit effet de survol sur les images pour la lisibilité */
+        .certif-item:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 9, 1, 0.2);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -148,7 +155,7 @@
                     <ul class="timeline-tasks">
                         <li><strong>Virtualisation :</strong> Utilisation de <strong>VMware, VirtualBox et Proxmox</strong>.</li>
                         <li>Maintenance de parc informatique et assistance utilisateurs.</li>
-                        <li>Exploitation des serveurs et stockage de données[cite: 1].</li>
+                        <li>Exploitation des serveurs et stockage de données.</li>
                     </ul>
                 </div>
             </div>
@@ -162,7 +169,7 @@
                     <div class="timeline-meta">
                         <span><i class="fas fa-graduation-cap"></i> UPJV · Amiens</span>
                     </div>
-                    <p>Approfondissement de la logique, des statistiques et de la théorie des graphes[cite: 1].</p>
+                    <p>Approfondissement de la logique, des statistiques et de la théorie des graphes.</p>
                 </div>
             </div>
 
@@ -193,6 +200,63 @@
             </div>
 
         </div>
+
+<!-- SECTION VISUELLE DES CERTIFICATIONS -->
+<section class="container">
+    <div class="card" style="margin-top: 2rem;">
+        <h2 style="color: var(--rouge-vif); margin-bottom: 2rem;">
+            <i class="fas fa-images" style="margin-right: 10px;"></i>Galerie des Certifications
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+            
+            <!-- Linux Unhatched -->
+            <div class="certif-item">
+                <img src="certifications/linux-unhatched.png" alt="NDG Linux Unhatched" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Linux Unhatched[cite: 10]</p>
+            </div>
+
+            <!-- Python Essentials -->
+            <div class="certif-item">
+                <img src="certifications/python-essentials-1.1.png" alt="Python Essentials 1" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Python Essentials 1[cite: 5]</p>
+            </div>
+
+            <!-- Microsoft Fabric -->
+            <div class="certif-item">
+                <img src="certifications/fabric.png" alt="Microsoft Fabric" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Microsoft Fabric</p>
+            </div>
+
+            <!-- Power BI v2 -->
+            <div class="certif-item">
+                <img src="certifications/power_BI_v2.png" alt="Power BI v2" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Power BI (v2)</p>
+            </div>
+
+            <!-- Power BI v1 -->
+            <div class="certif-item">
+                <img src="certifications/power_BI.png" alt="Power BI" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Power BI (v1)</p>
+            </div>
+
+            <!-- Base de données -->
+            <div class="certif-item">
+                <img src="certifications/base_de_donné.png" alt="Bases de données" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Bases de Données</p>
+            </div>
+
+            <!-- Certification PIX -->
+            <div class="certif-item">
+                <img src="certifications/pix.png" alt="PIX" style="width: 100%; border-radius: 10px; border: 1px solid var(--peche); transition: transform 0.3s;">
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 5px; font-weight: 600;">Certification PIX</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
     </main>
 
     <footer class="main-footer" id="contact">
